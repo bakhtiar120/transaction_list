@@ -46,7 +46,7 @@
          <Stack.Screen
            name="TransactionDetail"
            component={TransactionDetail}
-           options={{ headerShown: false }}
+           options={{ headerShown: true,title: 'Transaction Detail' }}
          />
        </Stack.Navigator>
      </NavigationContainer>

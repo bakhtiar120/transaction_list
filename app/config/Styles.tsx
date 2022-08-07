@@ -4,8 +4,20 @@ import { Colors } from './Colors';
 var width = Dimensions.get('window').width;
 var height = Dimensions.get('window').height;
 export default StyleSheet.create({
-    container:{
-        flex:1
+    container: {
+        flex: 1,
+        backgroundColor: "#DCDCDC"
+    },
+    container2: {
+        flex: 1,
+        backgroundColor: "#ffffff"
+    },
+    centeredView: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: 22,
+        backgroundColor: 'rgba(0,0,0,0.5)'
     },
     subContainer:{
         marginTop:15,

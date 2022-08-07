@@ -1,5 +1,5 @@
-import React, { FC } from 'react';
-import { StyleSheet, Alert, View, ToastAndroid, Text, TouchableHighlight, TouchableOpacity, Platform } from 'react-native';
+import React, { FC,useEffect } from 'react';
+import { StyleSheet, Alert, View, ToastAndroid,StatusBar, Text, TouchableHighlight, TouchableOpacity, Platform } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { TransactionDetailScreenRouteProp } from '../../config/Types';
 import Styles from '../../config/Styles';
@@ -22,6 +22,10 @@ const TransactionDetail: React.FC<Props> = ({
     const navigation = useNavigation();
     const route = useRoute<TransactionDetailScreenRouteProp>();
 
+    useEffect(() => {
+        StatusBar.setBarStyle(Platform.OS === 'ios'? 'dark-content': 'default')
+    }, []);
+    
     const copyToClipboard = () => {
         Clipboard.setString(route.params.id);
         let msg = "Copy ID Transaksi Berhasil"
@@ -33,7 +37,7 @@ const TransactionDetail: React.FC<Props> = ({
     };
 
     return (
-        <View style={styles.container}>
+        <View style={Styles.container2}>
             <View style={Styles.subContainer}>
                 <View style={{ flexDirection: 'row' }}>
                     <Text style={Styles.title}>ID TRANSAKSI:#{route.params.id}</Text>
@@ -96,16 +100,5 @@ const TransactionDetail: React.FC<Props> = ({
     );
 };
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
-    greeting: {
-        fontSize: 20,
-        color: "#000000",
-        fontWeight: 'bold',
-        margin: 16
-    }
-});
 
 export default TransactionDetail;
